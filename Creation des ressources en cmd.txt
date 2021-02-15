@@ -1,0 +1,218 @@
+rem les ous
+
+rem Nom de domaine : DomTp2.Ing
+
+#OU
+#Créer une OU racine "Etudes" :
+dsadd ou "ou=Etudes,dc=DomTp2,dc=Ing"
+
+#Créer une OU 1ereA :
+dsadd ou "ou=1ereA,ou=Etudes,dc=DomTp2,dc=Ing"
+
+#Créer une OU 2EmeA :
+dsadd ou "ou=2EmeA,ou=Etudes,dc=DomTp2,dc=Ing"
+
+#Créer une OU 3EmeA :
+dsadd ou "ou=3emeA,ou=Etudes,dc=DomTp2,dc=Ing"
+
+
+#Créer une OU Alternance : 
+
+dsadd ou "ou=Alternanceou=3emeA,ou=Etudes,dc=DomTp2,dc=Ing"
+
+#Créer une OU Initiale (soeur de l alternance:
+
+dsadd ou "ou=Initiale,ou=3emeA,ou=Etudes,dc=DomTp2,dc=Ing"
+
+
+rem les dossiers a la racine c:\ sur le srv-adds-1
+
+@echo allez à la racine du disque
+
+cd\
+
+@ech allez dans un sous dossier
+
+rem md Etudes
+rem md 1ereA
+rem md 2eme1
+rem md 3eme
+rem md Initiale
+rem md Alternance
+
+rem partage ces dossiers 
+@echo partager le dossier publsrv en "Ct" Tout le monde
+
+cd\
+Net share Etudes="c:\Etudes " /GRANT:"tout le monde",Read /GRANT:Administrateur,FULL
+Net share 1ereA="c:\1ereA " /GRANT:"tout le monde",Read /GRANT:Administrateur,FULL
+Net share 2emeA="c:\2emeA " /GRANT:"tout le monde",Read /GRANT:Administrateur,FULL
+Net share 3emeA="c:\3emeA " /GRANT:"tout le monde",Read /GRANT:Administrateur,FULL
+Net share Alternance="c:\Alternance " /GRANT:"tout le monde",Read /GRANT:Administrateur,FULL
+Net share Initiale="c:\Initiale " /GRANT:"tout le monde",Read /GRANT:Administrateur,FULL
+
+rem creons deux utilisateurs
+
+#Créer un utilisateur user-etudes :
+dsadd user "cn=user-etudes,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "UTILISATEUR" -office salle14 
+-tel "01 22 33 44 55" -email user-etudes@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+ 
+#Créer un utilisateur Admin-etudes :
+dsadd user "cn=user2,cn=Admin-etudes,dc=Ynov,dc=Int" -pwd p@sswrd1234 -desc "Administrateur local" -office salle14 
+-tel "01 22 33 44 55" -email admin-etudes@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+
+
+#Créer un utilisateur user-1ereA :
+dsadd user "cn=user-1ereA,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "UTILISATEUR" -office salle14 
+-tel "01 22 33 44 55" -email user-1ereA@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+ 
+#Créer un utilisateur Admin-1ereA :
+dsadd user "cn=Admin-1ereA,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "Administrateur local" -office salle14 
+-tel "01 22 33 44 55" -email admin-1ereA@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+
+#Créer un utilisateur user-2emeA :
+dsadd user "cn=user-2emeA,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "UTILISATEUR" -office salle14 
+-tel "01 22 33 44 55" -email user-2emeA@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+ 
+#Créer un utilisateur Admin-2emeA :
+dsadd user "cn=Admin-2emeA,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "Administrateur local" -office salle14 
+-tel "01 22 33 44 55" -email admin-2emeA@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+
+#Créer un utilisateur user-3emeA :
+dsadd user "cn=user-3emeA,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "UTILISATEUR" -office salle14 
+-tel "01 22 33 44 55" -email user-3emeA@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+ 
+#Créer un utilisateur Admin-3emeA :
+dsadd user "cn=Admin-3emeA,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "Administrateur local" -office salle14 
+-tel "01 22 33 44 55" -email admin-3emeA@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+
+#Créer un utilisateur user-alternance :
+dsadd user "cn=user-alternance,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "UTILISATEUR" -office salle14 
+-tel "01 22 33 44 55" -email user-Alternance@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+ 
+#Créer un utilisateur Admin-alternance :
+dsadd user "cn=Admin-alternance,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "Administrateur local" -office salle14 
+-tel "01 22 33 44 55" -email admin-Alternance@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+
+#Créer un utilisateur user-initiale:
+dsadd user "cn=user-initiale,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "UTILISATEUR" -office salle14 
+-tel "01 22 33 44 55" -email user-initiale@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+ 
+#Créer un utilisateur Admin-initiale :
+dsadd user "cn=Admin-initiale,cn=users,dc=DomTp2,dc=Ing" -pwd p@sswrd1234 -desc "Administrateur local" -office salle14 
+-tel "01 22 33 44 55" -email admin-initiale@DomTp2.Ing -hometel "01 55 66 77 88" -mobile "06 99 88 77 55" 
+-fax "01 55 44 22 33" -webpg www.DomTp2.Ing -title "Utilisateur" -dept Informatique -company PGSM -disabled no
+
+
+
+
+
+rem le groupe
+
+#Créer un groupe local de sécurité: 
+dsadd group "cn=gl1,cn=users,dc=DomTp2,dc=Ing" -secgrp yes -scope l -samid gl1 -desc GroupeLocal1 
+
+#Créer un groupe global de sécurité:
+dsadd group "cn=gg1,cn=users,dc=DomTp2,dc=InG" -secgrp yes -scope l -samid gg1 -desc GroupeGlobal1 
+
+#Créer un groupe universel de sécurité :
+dsadd group "cn=gu1,cn=users,dc=DomTp2,dc=Ing" -secgrp yes -scope l -samid gu1 -desc GroupeUniversel1
+
+#Mettre un utilisateur à un groupe global :
+dsmod group "cn=gg1,cn=users,dc=DomTp2,dc=ing" -addmbr "cn=user-etudes,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=gg1,cn=users,dc=DomTp2,dc=ing" -addmbr "cn=user-1ereA,ou=1ereA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=gg1,cn=users,dc=DomTp2,dc=ing" -addmbr "cn=user-2emeA,ou=2emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=gg1,cn=users,dc=DomTp2,dc=ing" -addmbr "cn=user-3emeA,ou=3emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=gg1,cn=users,dc=DomTp2,dc=ing" -addmbr "cn=user-initiale,ou=initiale,ou=3emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=gg1,cn=users,dc=DomTp2,dc=ing" -addmbr "cn=user-alternance,ou=Alternance,ou=etudes,dc=DomTp2,dc=Ing"
+
+rem administrateurs 
+
+dsmod group "cn=operateurs de serveur ,cn=buitlin,dc=DomTp2,dc=ing" -addmbr "cn=user-etudes,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=operateurs de serveur,cn=builtin,cn=DomTp2,dc=ing" -addmbr "cn=user-1ereA,ou=1ereA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=operateurs de serveur,cn=builtindc=DomTp2,dc=ing" -addmbr "cn=user-2emeA,ou=2emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=operateurs de serveur,cn=bultin,dc=DomTp2,dc=ing" -addmbr "cn=user-3emeA,ou=3emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=operateurs de serveur,cn=builtin,dc=DomTp2,dc=ing" -addmbr "cn=user-initiale,ou=initiale,ou=3emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=operateurs de serveur,cn=builtin,dc=DomTp2,dc=ing" -addmbr "cn=user-alternance,ou=Alternance,ou=etudes,dc=DomTp2,dc=Ing"
+
+
+
+  
+rem administrateurs 
+
+dsmod group "cn=Administrateurs ,cn=buitlin,dc=DomTp2,dc=ing" -addmbr "cn=admin-etudes,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=Administrateurs,cn=builtin,cn=DomTp2,dc=ing" -addmbr "cn=admin-1ereA,ou=1ereA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=Administrateurs,cn=builtindc=DomTp2,dc=ing" -addmbr "cn=admin-2emeA,ou=2emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=Administrateurs,cn=bultin,dc=DomTp2,dc=ing" -addmbr "cn=admin-3emeA,ou=3emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=administrateurs ,cn=builtin,dc=DomTp2,dc=ing" -addmbr "cn=admin-initiale,ou=initiale,ou=3emeA,ou=etudes,dc=DomTp2,dc=Ing"
+dsmod group "cn=administrateurs ,cn=builtin,dc=DomTp2,dc=ing" -addmbr "cn=admin-alternance,ou=Alternance,ou=etudes,dc=DomTp2,dc=Ing"
+
+
+
+
+
+#Mettre un groupe global dans un groupe universel :
+dsmod group "cn=gu1,cn=users,dc=DomTp2,dc=Ing" -addmbr "cn=gg1,cn=users,dc=DomTp2,dc=Ing"
+
+#Mettre un groupe universel dans un groupe local :
+dsmod group "cn=gl1,cn=users,dc=DomTp2,dc=Ing" -addmbr "cn=gu1,cn=users,dc=DomTp2,dc=Ing"
+
+rem les permissions nfts
+cacls  c:\Etudes /e  /g gl1 :f
+cacls  c:\Etudes /e  /g gu2 :c
+cacls  c:\Etudes /e  /g gg3 :R
+
+cacls  c:\1ere2 /e  /g gl1 :f
+cacls  c:\1ereA /e  /g gl2 :c
+cacls  c:\1ereA /e  /g gl 3 :r
+
+cacls  c:\2emeA /e  /g gl1 :f
+cacls  c:\2emeA /e  /g gl2 :c
+cacls  c:\2emeA /e  /g gl 3 :r
+
+
+cacls  c:\3emeA/e  /g gl1 :f
+cacls  c:\3emeA /e  /g gl2 :c
+cacls  c:\3emeA /e  /g gl 3 :r
+
+cacls  c:\alternance /e  /g gl1 :f
+cacls  c:\alternance /e  /g gl2 :c
+cacls  c:\alternance /e  /g gl3 :R
+
+cacls  c:\initiale /e  /g gl1 :r
+cacls  c:\initiale /e  /g gl2 :r
+cacls  c:\initiale /e  /g gl 3 :r
+
+
+#Créer un compte machine :
+dsadd computer "cn = client, ou = Etudes, dc = DomTp2, dc = Ing"
+
+dsadd computer "cn = 1ereA, ou=1ereA,ou = Etudes, dc = DomTp2, dc = Ing"
+
+dsadd computer "cn = clt, ou=2emeA, ou = Etudes, dc = DomTp2, dc = Ing"
+
+dsadd computer "cn = clt2, ou=3emeA, ou = Etudes, dc = DomTp2, dc = Ing"
+
+dsadd computer "cn = client1, ou=alternance, ou=3emeA, ou = Etudes, dc = DomTp2, dc = Ing"
+
+dsadd computer "cn = client2, ou=initiale, ou=3emeA ,ou = Etudes, dc = DomTp2, dc = Ing"
+
+
+
+
+
+
+
+
+
